@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  createdAt    DateTime @default(now())
+  wishlists    Wishlist[]
+}
+
+model Wishlist {
+  id          String  @id @default (uuid())
+  userId      String  
+  user        User    @relation(fields: [userId], references: [id])
+  title       String
+  isPublic    Boolean
+  createdAt   DateTime @default(now())
+  items       WishlistItem[]
+}
+
+model WishlistItem {
+  id          String  @id @default (uuid())
+  wishlistId  String
+  wishlist    Wishlist @relation(fields: [wishlistId], references: [id])
+  title       String
+  description String
+  url         String
+  imageUrl    String
+  createdAt   DateTime @default(now())
+}

@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "prisma:migrate": "npx prisma migrate dev --name init --schema=./src/prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema=./src/prisma/schema.prisma",
+    "test:graphql": "ts-node scripts/test-graphql.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +16,8 @@
   "dependencies": {
     "@apollo/server": "^5.0.0",
     "@as-integrations/express5": "^1.1.2",
+    "@prisma/client": "^6.13.0",
+    "bcrypt": "^6.0.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
@@ -21,13 +26,18 @@
     "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/body-parser": "^1.19.6",
     "@types/cors": "^2.8.14",
     "@types/express": "^5.0.3",
     "@types/graphql": "^14.2.3",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/node": "^24.1.0",
+    "prisma": "^6.13.0",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "@apollo/client": "^3.8.0",
+    "cross-fetch": "^4.0.0",
+    "ts-node": "^10.9.0"
   }
 }

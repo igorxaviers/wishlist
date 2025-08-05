@@ -6,7 +6,8 @@
   "scripts": {
     "dev:web": "pnpm --filter web dev",
     "build:web": "pnpm --filter web build",
-    "dev:api": "pnpm --filter api dev"
+    "dev:api": "pnpm --filter api dev",
+    "dev": "pnpm run dev:web & pnpm run dev:api"
   },
   "keywords": [],
   "author": "",
